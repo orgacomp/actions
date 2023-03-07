@@ -1,0 +1,16 @@
+# action.yml
+name: 'Datalab Action'
+description: 'That so'
+inputs:
+  target:  # id of input
+    description: 'Que correr del make'
+    required: true
+    default: 'test'
+outputs:
+  result: # id of output
+    description: 'El resultado'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.target }}
