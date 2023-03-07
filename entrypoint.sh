@@ -1,7 +1,7 @@
 #!/bin/sh -l
 
 cd "$GITHUB_WORKSPACE/datalab" || exit
-command -v git || { apt update -y && apt install git -y ; }
+command -v git || { apt-get update -y && apt-get install git -y ; }
 
 test_labfiles() {
     # Remember current branch name
@@ -15,8 +15,8 @@ test_labfiles() {
     git diff --name-only "origin/$GITHUB_BASE_REF..." >> /tmp/modified_files
     if ! cmp /tmp/labfiles /tmp/modified_files ; then
         body=$(grep -v -F -f /tmp/labfiles /tmp/modified_files)
-        echo "::set-output name=corrupt::true"
-        echo "::set-output name=modfiles::$body"
+        echo 'corrupt=true' >> $GITHUB_ENV
+        echo 'modfiles=$body' >> $GITHUB_ENV
         return 1
     fi
 }
