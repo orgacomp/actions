@@ -15,8 +15,8 @@ test_labfiles() {
     git diff --name-only "origin/$GITHUB_BASE_REF..." >> /tmp/modified_files
     if ! cmp /tmp/labfiles /tmp/modified_files ; then
         body=$(grep -v -F -f /tmp/labfiles /tmp/modified_files)
-        echo 'corrupt=true' >> $GITHUB_ENV
-        echo 'modfiles=$body' >> $GITHUB_ENV
+        echo 'corrupt=true' >> $GITHUB_OUTPUT
+        echo 'modfiles=$body' >> $GITHUB_OUTPUT
         return 1
     fi
 }
@@ -25,4 +25,4 @@ test_labfiles || exit 1
 
 make "$1" | tee "$1".txt
 body=$(grep "Score = " "$1.txt")
-echo "::set-output name=result::$body"
+echo 'result=$body' >> $GITHUB_OUTPUT
