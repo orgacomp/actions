@@ -1,6 +1,6 @@
 #!/bin/sh -l
 
-cd "$GITHUB_WORKSPACE/tp1" || exit
+cd "$GITHUB_WORKSPACE/datalab" || exit
 command -v git || { apt update -y && apt install git -y ; }
 
 test_labfiles() {
