@@ -28,6 +28,6 @@ test_labfiles() {
 
 test_labfiles || exit 1
 make "$1" | tee "$1".txt
-body=$(grep "Score = " "$1.txt")
-SUMMARY="# Resultados\n $body"
+SUMMARY="# Resultados\n
+cat "$1".txt >> $SUMMARY
 echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
