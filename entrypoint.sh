@@ -18,8 +18,10 @@ test_labfiles() {
     cat /tmp/labfiles
     if ! cmp /tmp/labfiles /tmp/modified_files ; then
         body=$(grep -v -F -f /tmp/labfiles /tmp/modified_files)
-        echo 'corrupt=true' >> $GITHUB_OUTPUT
-        echo 'modfiles=$body' >> $GITHUB_OUTPUT
+        
+        SUMMARY=$'# Archivos modificados\n## Los siguientes archivos no pueden ser modificados\n$body'
+        echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
+
         return 1
     fi
 }
