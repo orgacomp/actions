@@ -22,7 +22,7 @@ test_labfiles() {
 }
 
 test_labfiles || exit 1
-
+exit 1
 make "$1" | tee "$1".txt
 body=$(grep "Score = " "$1.txt")
 echo 'result=$body' >> $GITHUB_OUTPUT
