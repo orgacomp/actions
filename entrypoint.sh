@@ -14,6 +14,8 @@ test_labfiles() {
     git fetch origin "$work_branch"
     git checkout "$work_branch"
     git diff --name-only "origin/$GITHUB_BASE_REF..." >> /tmp/modified_files
+    cat /tmp/modified_files
+    cat /tmp/labfiles
     if ! cmp /tmp/labfiles /tmp/modified_files ; then
         body=$(grep -v -F -f /tmp/labfiles /tmp/modified_files)
         echo 'corrupt=true' >> $GITHUB_OUTPUT
