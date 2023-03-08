@@ -1,5 +1,5 @@
 #!/bin/sh -l
-
+set -x
 cd "$GITHUB_WORKSPACE/datalab" || exit
 git config --global --add safe.directory $GITHUB_WORKSPACE
 
