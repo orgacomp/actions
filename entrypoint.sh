@@ -1,11 +1,11 @@
 #!/bin/sh -l
 set -x
-cd "$GITHUB_WORKSPACE/datalab" || exit
+cd "$GITHUB_WORKSPACE/$GITHUB_BASE_REF" || exit
 git config --global --add safe.directory $GITHUB_WORKSPACE
 
 test_labfiles() {
     # Remember current branch name
-    work_branch="$(git rev-parse --abbrev-ref HEAD)"
+    work_branch=$GITHUB_HEAD_REF
     # Checkout PR target
     git fetch origin "$GITHUB_BASE_REF" --depth=1 || return 0
     git checkout "$GITHUB_BASE_REF" || return 0
