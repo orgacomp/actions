@@ -29,5 +29,5 @@ test_labfiles() {
 test_labfiles || exit 1
 make "$1" | tee "$1".txt
 SUMMARY="# Resultados\n"
-$SUMMARY+=`cat "$1".txt`
+SUMMARY+=`cat "$1".txt`
 echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
