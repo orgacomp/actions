@@ -11,6 +11,7 @@ test_labfiles() {
     git checkout "$GITHUB_BASE_REF" || return 0
     mkdir -p /tmp || true
     cp .labfiles /tmp/labfiles || return 0
+    git fetch origin "$work_branch"
     git checkout "$work_branch"
     git diff --name-only "origin/$GITHUB_BASE_REF..." >> /tmp/modified_files
     if ! cmp /tmp/labfiles /tmp/modified_files ; then
