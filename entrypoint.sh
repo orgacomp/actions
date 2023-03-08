@@ -1,7 +1,7 @@
 #!/bin/sh -l
 
 cd "$GITHUB_WORKSPACE/datalab" || exit
-command -v git || { apt-get update -y && apt-get install git -y ; }
+git config --global --add safe.directory $GITHUB_WORKSPACE
 
 test_labfiles() {
     # Remember current branch name
