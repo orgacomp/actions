@@ -19,7 +19,7 @@ test_labfiles() {
     if ! cmp /tmp/labfiles /tmp/modified_files ; then
         body=$(grep -v -F -f /tmp/labfiles /tmp/modified_files)
         
-        SUMMARY="# Archivos modificados\n## Los siguientes archivos no pueden ser modificados\n$body"
+        SUMMARY="## Archivos modificados\n### Los siguientes archivos no pueden ser modificados\n$body"
         echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
 
         return 1
@@ -28,7 +28,7 @@ test_labfiles() {
 
 test_labfiles || exit 1
 make "$1" | tee "$1".txt
-echo "# $1 results\n" >> $GITHUB_STEP_SUMMARY
+echo "### $1 results\n" >> $GITHUB_STEP_SUMMARY
 echo '```console'>> $GITHUB_STEP_SUMMARY
 echo "$(cat "$1".txt)" >> $GITHUB_STEP_SUMMARY
 echo '```'
