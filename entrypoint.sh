@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/bin/bash -l
 set -x
 cd "$GITHUB_WORKSPACE/$GITHUB_BASE_REF" || exit
 git config --global --add safe.directory $GITHUB_WORKSPACE
