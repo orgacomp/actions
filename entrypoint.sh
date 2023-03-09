@@ -32,7 +32,7 @@ test_labfiles || exit 1
 make "$1" | tee "$1".txt
 RETURN=${PIPESTATUS[0]}
 
-echo "### $1 results\n" >> $GITHUB_STEP_SUMMARY
+echo "### $1 results" >> $GITHUB_STEP_SUMMARY
 echo '```console'>> $GITHUB_STEP_SUMMARY
 echo "$(cat "$1".txt)" >> $GITHUB_STEP_SUMMARY
 echo '```'
