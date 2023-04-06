@@ -38,6 +38,5 @@ echo "### $1 results" >> $GITHUB_STEP_SUMMARY
 echo '```console'>> $GITHUB_STEP_SUMMARY
 echo "$(cat "$1".txt)" >> $GITHUB_STEP_SUMMARY
 echo '```'
-echo "::set-output name=result::$body"
-
+echo "result=$body" >> $GITHUB_OUTPUT
 exit $RETURN
