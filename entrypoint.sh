@@ -29,14 +29,12 @@ test_labfiles() {
 
 test_labfiles || exit 1
 
-make "$1" | tee "$1".txt
+./runTester.sh | tee tester.txt
 RETURN=${PIPESTATUS[0]}
-body=$(grep "Score = " "$1.txt")
 
 
-echo "### $1 results" >> $GITHUB_STEP_SUMMARY
+echo "### Test results" >> $GITHUB_STEP_SUMMARY
 echo '```console'>> $GITHUB_STEP_SUMMARY
-echo "$(cat "$1".txt)" >> $GITHUB_STEP_SUMMARY
+echo "$(cat tester.txt)" >> $GITHUB_STEP_SUMMARY
 echo '```'
-echo "result=$body" >> $GITHUB_OUTPUT
 exit $RETURN
