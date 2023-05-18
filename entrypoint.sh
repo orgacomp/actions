@@ -16,8 +16,9 @@ test_labfiles() {
     git diff --name-only "origin/$GITHUB_BASE_REF..." >> /tmp/modified_files
     cat /tmp/modified_files
     cat /tmp/labfiles
-    if ! cmp /tmp/labfiles /tmp/modified_files ; then
-        body=$(grep -v -F -f /tmp/labfiles /tmp/modified_files)
+    output=$(grep -v -F -f .labfiles /tmp/modified_files)
+    if [ -n "$output" ] ; then
+        body=$output
         
         echo "### Se rechaza el PR :( " >> $GITHUB_STEP_SUMMARY
         echo "#### Los siguientes archivos no pueden ser modificados" >> $GITHUB_STEP_SUMMARY
