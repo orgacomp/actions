@@ -1,5 +1,5 @@
 # action.yml
-name: 'Datalab Action'
+name: 'Cachelab Action'
 description: 'That so'
 inputs:
   target:  # id of input

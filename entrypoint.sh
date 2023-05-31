@@ -30,12 +30,12 @@ test_labfiles() {
 
 test_labfiles || exit 1
 
-./runTester.sh | tee tester.txt
+./"$1".sh | tee "$1".txt
 RETURN=${PIPESTATUS[0]}
 
 
 echo "### Test results" >> $GITHUB_STEP_SUMMARY
 echo '```console'>> $GITHUB_STEP_SUMMARY
-echo "$(cat tester.txt)" >> $GITHUB_STEP_SUMMARY
+echo "$(cat "$1".txt)" >> $GITHUB_STEP_SUMMARY
 echo '```'
 exit $RETURN
