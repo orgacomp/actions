@@ -16,7 +16,7 @@ test_labfiles() {
     git diff --name-only "origin/$GITHUB_BASE_REF..." >> /tmp/modified_files
     cat /tmp/modified_files
     cat /tmp/labfiles
-    output=$(grep -v -F -f /tmp/labfiles /tmp/modified_files)
+    output=$(grep -Fxf /tmp/labfiles /tmp/modified_files)
     if [ -n "$output" ] ; then
         body=$output
         
