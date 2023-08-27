@@ -1,5 +1,6 @@
 FROM twint/orga:datalab
 
+RUN apt-get install libcriterion-dev
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
 
