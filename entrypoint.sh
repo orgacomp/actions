@@ -28,7 +28,6 @@ test_labfiles() {
     fi
 }
 
-ls -al
 cd code
 make tester
 ./tester | tee tester.txt
