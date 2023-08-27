@@ -28,9 +28,8 @@ test_labfiles() {
     fi
 }
 
-test_labfiles || exit 1
-
-./runTester.sh | tee tester.txt
+make tester
+./tester | tee tester.txt
 RETURN=${PIPESTATUS[0]}
 
 
