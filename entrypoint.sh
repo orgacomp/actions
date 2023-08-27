@@ -28,7 +28,8 @@ test_labfiles() {
     fi
 }
 
-cd gitlab/code
+ls -al
+cd code
 make tester
 ./tester | tee tester.txt
 RETURN=${PIPESTATUS[0]}
