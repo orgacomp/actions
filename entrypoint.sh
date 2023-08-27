@@ -28,10 +28,10 @@ test_labfiles() {
     fi
 }
 
+cd gitlab/code
 make tester
 ./tester | tee tester.txt
 RETURN=${PIPESTATUS[0]}
-
 
 echo "### Test results" >> $GITHUB_STEP_SUMMARY
 echo '```console'>> $GITHUB_STEP_SUMMARY
