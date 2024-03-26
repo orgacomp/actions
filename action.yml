@@ -1,16 +1,16 @@
 # action.yml
-name: 'Cachelab Action'
-description: 'That so'
+name: "Combinacionales Action"
+description: "That so"
 inputs:
-  target:  # id of input
-    description: 'Que correr del make'
+  target: # id of input
+    description: "Que correr del make"
     required: true
-    default: 'test'
+    default: "test"
 outputs:
   result: # id of output
-    description: 'El resultado'
+    description: "El resultado"
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
   args:
     - ${{ inputs.target }}
