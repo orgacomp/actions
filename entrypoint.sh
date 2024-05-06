@@ -30,7 +30,7 @@ test_labfiles() {
 
 test_labfiles || exit 1
 
-./runTester.sh | tee tester.txt
+./"$1".sh | tee tester.txt
 RETURN=${PIPESTATUS[0]}
 
 
